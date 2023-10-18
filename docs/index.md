@@ -11,7 +11,7 @@
                                
 ***       
 ### 【Wondows版】                       
-<img src="https://github.com/CSReviser/CaptureStream/assets/46049273/67b79c8e-6dc7-4cd8-b244-dd9f7e21e103.png" width="500">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/276252232-67b79c8e-6dc7-4cd8-b244-dd9f7e21e103.png" width="500">
 
 
 ### 【Ubuntu版】                       
