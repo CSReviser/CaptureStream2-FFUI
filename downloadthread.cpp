@@ -950,19 +950,22 @@ bool DownloadThread::captureStream_json( QString kouza, QString hdate, QString f
 
 QString DownloadThread::paths[] = {
 	"english/basic0", "english/basic1", "english/basic2", "english/basic3",
-	"english/timetrial",  "english/enjoy", "english/kaiwa", "english/business1",
-	"null", "english/vr-radio",
-//	"english/business2", "english/everybody", "english/gendai", "english/enjoy", 
-	"null_optional1", "null_optional2", "null_optional3", "null_optional4",
-	"null_optional5", "null_optional6", "null_optional7", "null_optional8"
+	"english/kaiwa", "english/business1",
+	"english/enjoy", "english/timetrial", "english/vr-radio", "",
+	"chinese/kouza", "chinese/stepup", "hangeul/kouza", "hangeul/stepup",
+	"german/kouza", "german/kouza2", "french/kouza", "french/kouza2",
+	"italian/kouza", "italian/kouza2", "spanish/kouza", "spanish/kouza2",
+	"russian/kouza","russian/kouza2"	
 };
 
 QString DownloadThread::json_paths[] = {
 	"6805", "6806", "6807", "6808",
-	"2331", "3064", "0916", "6809", 
-	"7512", "4121",
-	"0953", "0943", "0946", "0948",
-	"0953", "0943", "0946", "0948"
+	"0916", "6809", 
+	"3064", "2331", "4121", "7512",  
+	"0915", "6581", "0951", "6810",
+	"0943", "4410", "0953", "4412",
+	"0946", "4411", "0948", "4413",
+	"0956", "4414"
 };
 
 
@@ -1014,12 +1017,15 @@ QMap<QString, QString> DownloadThread::map = {
 void DownloadThread::run() {
 	QAbstractButton* checkbox[] = {
 		ui->toolButton_basic0, ui->toolButton_basic1, ui->toolButton_basic2, ui->toolButton_basic3,
-		ui->toolButton_timetrial, ui->toolButton_enjoy, ui->toolButton_kaiwa, ui->toolButton_business1,
-		ui->toolButton_gendai, ui->toolButton_vrradio,
-		ui->toolButton_optional1, ui->toolButton_optional2, 
-		ui->toolButton_optional3, ui->toolButton_optional4,
-		ui->toolButton_optional5, ui->toolButton_optional6, 
-		ui->toolButton_optional7, ui->toolButton_optional8, 
+		ui->toolButton_kaiwa, ui->toolButton_business1,
+		ui->toolButton_enjoy, ui->toolButton_timetrial, ui->toolButton_vrradio, ui->toolButton_gendai,
+		ui->toolButton_chinese, ui->toolButton_stepup_chinese, 
+		ui->toolButton_hangeul, ui->toolButton_stepup_hangeul, 
+		ui->toolButton_german, ui->toolButton_german2,
+		ui->toolButton_french, ui->toolButton_french2, 
+		ui->toolButton_italian, ui->toolButton_italian2,
+		ui->toolButton_spanish, ui->toolButton_spanish2,
+		ui->toolButton_russian, ui->toolButton_russian2,
 		NULL
 	};
 
@@ -1032,7 +1038,8 @@ void DownloadThread::run() {
 
 
        for ( int i = 0; checkbox[i] && !isCanceled; i++ ) {
-       
+
+#if 0       
 		optional1 = MainWindow::optional1;
 		optional2 = MainWindow::optional2;
 		optional3 = MainWindow::optional3;
@@ -1049,7 +1056,7 @@ void DownloadThread::run() {
 		if ( paths[i].right( 9 ).startsWith("optional6") ) json_paths[i] = optional6;
 		if ( paths[i].right( 9 ).startsWith("optional7") ) json_paths[i] = optional7;
 		if ( paths[i].right( 9 ).startsWith("optional8") ) json_paths[i] = optional8;
-		
+#endif		
 	    	QString pattern( "[0-9]{4}" );
     		pattern = QRegularExpression::anchoredPattern(pattern);
 		if ( QRegularExpression(pattern).match( json_paths[i] ).hasMatch() ) json_paths[i] += "_01" ;

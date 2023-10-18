@@ -139,11 +139,11 @@ namespace {
 //			int day = regexp.cap( 2 ).toInt();
 //			result = QString( " (%1/%2/%3)" ).arg( regexp.cap( 3 ) )
 //					.arg( month, 2, 10, QLatin1Char( '0' ) ).arg( day, 2, 10, QLatin1Char( '0' ) );
-			result = QString( "  (2023/10/14)" ); 
+			result = QString( "  (2023/10/18)" ); 
 		}
 #endif
 #ifdef QT6
-			result = QString( "  (2023/10/14)" ); 
+			result = QString( "  (2023/10/18)" ); 
 #endif
 		return result;
 	}
@@ -239,10 +239,11 @@ MainWindow::MainWindow( QWidget *parent )
 	connect( action, SIGNAL( triggered() ), this, SLOT( customizeTitle() ) );
 	customizeMenu->addAction( action );
 	customizeMenu->addSeparator();
+#if 0
 	action = new QAction( QString::fromUtf8( "任意番組設定..." ), this );
 	connect( action, SIGNAL( triggered() ), this, SLOT( customizeScramble() ) );
 	customizeMenu->addAction( action );
-
+#endif
 	customizeMenu->addSeparator();
 	action = new QAction( QString::fromUtf8( "設定削除（終了）..." ), this );
 	connect( action, SIGNAL( triggered() ), this, SLOT( closeEvent2() ) );
@@ -316,6 +317,7 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 //#define DefaultFileName2 "%k_%Y_%M_%D"
 //#define DefaultFileName3 "%h"
 //#define DefaultFileName4 "%f"
+#if 0
 	CheckBox checkBoxes[] = {
 		{ ui->toolButton_basic0, "basic0", false },
 		{ ui->toolButton_basic1, "basic1", false },
@@ -340,6 +342,40 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 		{ ui->toolButton_detailed_message, "detailed_message", false },
 		{ NULL, NULL, false }
 	};
+#endif 
+	CheckBox checkBoxes[] = {
+		{ ui->toolButton_basic0, "basic0", false },
+		{ ui->toolButton_basic1, "basic1", false },
+		{ ui->toolButton_basic2, "basic2", false },
+		{ ui->toolButton_basic3, "basic3", false },
+		{ ui->toolButton_timetrial, "timetrial", false },
+		{ ui->toolButton_kaiwa, "kaiwa", false },
+		{ ui->toolButton_business1, "business1", false },
+//		{ ui->toolButton_business2, "business2", false },
+		{ ui->toolButton_chinese, "chinese", false },
+		{ ui->toolButton_french, "french", false },
+		{ ui->toolButton_french2, "french2", false },
+		{ ui->toolButton_italian, "italian", false },
+		{ ui->toolButton_italian2, "italian2", false },
+		{ ui->toolButton_hangeul, "hangeul", false },
+		{ ui->toolButton_german, "german", false },
+		{ ui->toolButton_german2, "german2", false },
+		{ ui->toolButton_spanish, "spanish", false },
+		{ ui->toolButton_spanish2, "spanish2", false },
+//		{ ui->toolButton_levelup_chinese, "levelup-chinese", false },
+		{ ui->toolButton_stepup_chinese, "stepup-chinese", false },
+		{ ui->toolButton_stepup_hangeul, "stepup-hangeul", false },
+//		{ ui->toolButton_levelup_hangeul, "levelup-hangeul", false },
+		{ ui->toolButton_russian, "russian", false },
+		{ ui->toolButton_russian2, "russian2", false },
+		{ ui->toolButton_vrradio, "vr-radio", false },
+		{ ui->toolButton_gendai, "gendai", false },
+//		{ ui->toolButton_ouyou1, "ouyou1", false },
+//		{ ui->toolButton_ouyou2, "ouyou2", false },
+		{ ui->toolButton_enjoy, "enjoy", false },
+		{ ui->toolButton_skip, "skip", true },
+		{ NULL, NULL, false }
+	};
 
 	typedef struct ComboBox {
 		QComboBox* comboBox;
@@ -356,6 +392,7 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 		{ NULL, NULL, false }
 	};
 	
+#if 0
 	typedef struct CheckBox2 {
 		QAbstractButton* checkBox;
 		QString titleKey;
@@ -375,7 +412,7 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 		{ ui->toolButton_optional8, "opt_title8", Program_TITLE8, "optional8", OPTIONAL8, optional8 },
 		{ NULL, NULL, "", "NULL", "", "" }
 	};
-	
+#endif	
 
 	QSettings settings( ini_file_path + INI_FILE, QSettings::IniFormat );
 	
@@ -448,6 +485,7 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 			QString extension = settings.value( textComboBoxes[i].key, textComboBoxes[i].defaultValue ).toString();
 			textComboBoxes[i].comboBox->setCurrentIndex( textComboBoxes[i].comboBox->findText( extension ) );
 		}
+#if 0
 		for ( int i = 0; checkBoxes2[i].checkBox != NULL; i++ ) {
 			checkBoxes2[i].checkBox->setText( settings.value( checkBoxes2[i].titleKey, checkBoxes2[i].defaultValue ).toString() );
 			if ( checkBoxes2[i].idKey == "NULL" ) continue;
@@ -464,7 +502,7 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 				default: break;
 			}
 		}
-
+#endif
 		for ( int i = 0; checkBoxes[i].checkBox != NULL; i++ ) {
 			checkBoxes[i].checkBox->setChecked( settings.value( checkBoxes[i].key, checkBoxes[i].defaultValue ).toBool() );
 		}
@@ -500,11 +538,13 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 			settings.setValue( comboBoxes[i].key, comboBoxes[i].comboBox->currentIndex() );
 		for ( int i = 0; textComboBoxes[i].comboBox != NULL; i++ )
 			settings.setValue( textComboBoxes[i].key, textComboBoxes[i].comboBox->currentText() );
+#if 0
 		for ( int i = 0; checkBoxes2[i].checkBox != NULL; i++ ) {
 			settings.setValue( checkBoxes2[i].titleKey, checkBoxes2[i].checkBox->text() );
 			if ( checkBoxes2[i].idKey == "NULL" ) continue;
 			settings.setValue( checkBoxes2[i].idKey, checkBoxes2[i].id );
 		}
+#endif
 	}
 
 	settings.endGroup();
@@ -545,6 +585,7 @@ void MainWindow::customizeScramble() {
 		title[i] = Utility::getProgram_name( optional[i] );
 		if ( title[i]  == "" ) { optional[i] = optional_temp[i]; title[i] = Utility::getProgram_name( optional[i] ); }
 	}
+#if 0
 	optional1 = optional[0]; optional2 = optional[1];
 	optional3 = optional[2]; optional4 = optional[3];
 	optional5 = optional[4]; optional6 = optional[5];
@@ -571,6 +612,7 @@ void MainWindow::customizeScramble() {
 	optional1 = optional[0]; optional2 = optional[1]; optional3 = optional[2]; optional4 = optional[3];
 	optional5 = optional[4]; optional6 = optional[5]; optional7 = optional[6]; optional8 = optional[7];
 	ScrambleDialog dialog( optional1, optional2, optional3, optional4, optional5, optional6, optional7, optional8 );
+#endif
     }
 }
 
