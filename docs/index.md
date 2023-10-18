@@ -2,7 +2,7 @@
 ## ([語学講座CS2](https://csreviser.github.io/CaptureStream2/))[［類似アプリ］](https://csreviser.github.io/CaptureStream2/application)          
 
 ***
-### 語学講座CS【extra】 [2023/10/18版](https://github.com/CSReviser/Capturestream2-extra/releases/tag/20231018)                 
+### 語学講座CS【extra】 [2023/10/18版](https://github.com/CSReviser/Capturestream2-FFUI/releases/tag/20231018)                 
 
    - #### Windows版(32bit): [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-FFUI/releases/download/20231018/CaptureStream2-FFUI-Windows-20231018.zip)　　
    - #### Windows版(64bit): [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-FFUI/releases/download/20231018/CaptureStream2-FFUI-Windows-x64-20231018.zip) 　　
@@ -15,7 +15,7 @@
 
 
 ### 【Ubuntu版】                       
-<img src="https://github.com/CSReviser/CaptureStream/assets/46049273/bd7d480f-ecba-41b9-818c-091ad71f45c6.png" width="500">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/276252365-bd7d480f-ecba-41b9-818c-091ad71f45c6.png" width="500">
 
 ***      
 <link rel="shortcut icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/46049273?v=4">
