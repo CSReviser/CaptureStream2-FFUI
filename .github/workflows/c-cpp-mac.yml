@@ -24,10 +24,10 @@ jobs:
       run: make
       
     - name: Make CaptureStream2 executable
-      run: chmod -R 755 ./CaptureStream2.app
+      run: chmod -R 755 ./CaptureStream2-FFUI.app
   
     - uses: actions/upload-artifact@v3
       with:
-        name: CaptureStream2-M1
+        name: CaptureStream2-FFUI-M1
         path: ./
 
