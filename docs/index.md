@@ -4,10 +4,10 @@
 ***
 ### 語学講座CS【extra】 [2023/10/18版](https://github.com/CSReviser/Capturestream2-extra/releases/tag/20231018)                 
 
-   - #### Windows版(32bit): [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-extra/releases/download/20231018/CaptureStream2-extra-Windows-20231018.zip)　　
-   - #### Windows版(64bit): [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-extra/releases/download/20231018/CaptureStream2-extra-Windows-x64-20231018.zip) 　　
-   - #### Ubuntu版: [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-extra/releases/download/20231018/CaptureStream2-extra-Ubuntu-qt5-20231018.zip)　　
-   - #### Macintosh版: [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-extra/releases/download/20231018/CaptureStream2-extra-Macintosh-20231018.dmg) 　　　　
+   - #### Windows版(32bit): [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-FFUI/releases/download/20231018/CaptureStream2-FFUI-Windows-20231018.zip)　　
+   - #### Windows版(64bit): [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-FFUI/releases/download/20231018/CaptureStream2-FFUI-Windows-x64-20231018.zip) 　　
+   - #### Ubuntu版: [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-FFUI/releases/download/20231018/CaptureStream2-FFUI-Ubuntu-qt6-20231018.zip)　　
+   - #### Macintosh版: [2023/10/18版ダウンロード](https://github.com/CSReviser/CaptureStream2-FFUI/releases/download/20231018/CaptureStream2-FFUI-MacOS-20231018.dmg) 　　　　
                                
 ***       
 ### 【Wondows版】                       
