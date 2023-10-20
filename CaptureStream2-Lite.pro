@@ -22,7 +22,7 @@ lessThan(QT_MAJOR_VERSION, 6): QT += script
 #equals(QT_MAJOR_VERSION, 6):  QT += core5compat
 DEFINES += QT_DISABLE_DEPRECATED_UP_TO=0x050F00
 
-TARGET = CaptureStream2-FFUI
+TARGET = CaptureStream2-Lite
 TEMPLATE = app
 SOURCES += main.cpp \
 	mainwindow.cpp \
@@ -70,7 +70,7 @@ macx {
 	}
 
 	release {
-		QMAKE_POST_LINK += macdeployqt CaptureStream2-FFUI.app
+		QMAKE_POST_LINK += macdeployqt CaptureStream2-Lite.app
 	}
 }
 

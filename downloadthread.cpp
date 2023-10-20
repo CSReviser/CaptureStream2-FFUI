@@ -955,7 +955,7 @@ QString DownloadThread::paths[] = {
 	"chinese/kouza", "chinese/stepup", "hangeul/kouza", "hangeul/stepup",
 	"german/kouza", "german/kouza2", "french/kouza", "french/kouza2",
 	"italian/kouza", "italian/kouza2", "spanish/kouza", "spanish/kouza2",
-	"russian/kouza","russian/kouza2"	
+	"russian/kouza","russian/kouza2", "", "", ""	
 };
 
 QString DownloadThread::json_paths[] = {
@@ -965,7 +965,7 @@ QString DownloadThread::json_paths[] = {
 	"0915", "6581", "0951", "6810",
 	"0943", "4410", "0953", "4412",
 	"0946", "4411", "0948", "4413",
-	"0956", "4414"
+	"0956", "4414", "0937", "1893", "2769"
 };
 
 
@@ -1026,6 +1026,7 @@ void DownloadThread::run() {
 		ui->toolButton_italian, ui->toolButton_italian2,
 		ui->toolButton_spanish, ui->toolButton_spanish2,
 		ui->toolButton_russian, ui->toolButton_russian2,
+		ui->toolButton_arabic, ui->toolButton_polish, ui->toolButton_polish,
 		NULL
 	};
 

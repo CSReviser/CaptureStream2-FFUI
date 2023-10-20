@@ -139,11 +139,11 @@ namespace {
 //			int day = regexp.cap( 2 ).toInt();
 //			result = QString( " (%1/%2/%3)" ).arg( regexp.cap( 3 ) )
 //					.arg( month, 2, 10, QLatin1Char( '0' ) ).arg( day, 2, 10, QLatin1Char( '0' ) );
-			result = QString( "  (2023/10/18)" ); 
+			result = QString( "  (2023/10/20)" ); 
 		}
 #endif
 #ifdef QT6
-			result = QString( "  (2023/10/18)" ); 
+			result = QString( "  (2023/10/20)" ); 
 #endif
 		return result;
 	}
@@ -368,6 +368,8 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 //		{ ui->toolButton_levelup_hangeul, "levelup-hangeul", false },
 		{ ui->toolButton_russian, "russian", false },
 		{ ui->toolButton_russian2, "russian2", false },
+		{ ui->toolButton_arabic, "arabic", false },
+		{ ui->toolButton_polish, "polish", false },
 		{ ui->toolButton_vrradio, "vr-radio", false },
 		{ ui->toolButton_gendai, "gendai", false },
 //		{ ui->toolButton_ouyou1, "ouyou1", false },
