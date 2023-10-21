@@ -15,7 +15,7 @@
 
 
 ### 【Ubuntu版】                       
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/277073279-988f6d46-31ac-476f-aac5-c3c9fbd1f091.png" width="500">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/277073637-c0b449fb-30a1-4b3c-87a7-58ca83a1b07e.png" width="500">
 
 ***      
 <link rel="shortcut icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/46049273?v=4">
