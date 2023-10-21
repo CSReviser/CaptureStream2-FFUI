@@ -11,11 +11,11 @@
                                
 ***       
 ### 【Wondows版】                       
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/276252232-67b79c8e-6dc7-4cd8-b244-dd9f7e21e103.png" width="500">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/277073263-322d09d0-b332-4bfc-a05e-a1bdafd430b2.png" width="500">
 
 
 ### 【Ubuntu版】                       
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/276252365-bd7d480f-ecba-41b9-818c-091ad71f45c6.png" width="500">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/277073279-988f6d46-31ac-476f-aac5-c3c9fbd1f091.png" width="500">
 
 ***      
 <link rel="shortcut icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/46049273?v=4">
