@@ -2,16 +2,16 @@
 ## ([語学講座CS2](https://csreviser.github.io/CaptureStream2/))[［類似アプリ］](https://csreviser.github.io/CaptureStream2/application)          
 
 ***
-### 語学講座CS2【Lite】 [2023/10/20版](https://github.com/CSReviser/Capturestream2-Lite/releases/tag/20231020)                 
+### 語学講座CS2【Lite】 [2023/11/08版](https://github.com/CSReviser/Capturestream2-Lite/releases/tag/20231108)                 
 
-   - #### Windows版(32bit): [2023/10/20版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231020/CaptureStream2-Lite-Windows-20231020.zip)　　
-   - #### Windows版(64bit): [2023/10/20版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231020/CaptureStream2-Lite-Windows-x64-20231020.zip) 　　
-   - #### Ubuntu版: [2023/10/20版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231020/CaptureStream2-Lite-Ubuntu-qt6-20231020.zip)　　
-   - #### Macintosh版: [2023/10/20版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231020/CaptureStream2-Lite-MacOS-20231020.dmg) 　　　　
+   - #### Windows版(32bit): [2023/11/08版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231108/CaptureStream2-Lite-Windows-20231108.zip)　　
+   - #### Windows版(64bit): [2023/11/08版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231108/CaptureStream2-Lite-Windows-x64-20231108.zip) 　　
+   - #### Ubuntu版: [2023/11/08版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231108/CaptureStream2-Lite-Ubuntu-20231108.zip)　　
+   - #### Macintosh版: [2023/11/08版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20231108/CaptureStream2-Lite-MacOS-20231108.dmg) 　　　　
                                
 ***       
 ### 【Wondows版】                       
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/277073263-322d09d0-b332-4bfc-a05e-a1bdafd430b2.png" width="500">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/46049273/281433093-7da5fa78-fc65-4c7f-a179-d999f9ec79aa.png" width="500">
 
 
 ### 【Ubuntu版】                       
