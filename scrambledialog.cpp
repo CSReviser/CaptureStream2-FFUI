@@ -23,6 +23,7 @@
 #include "mainwindow.h"
 #include "urldownloader.h"
 #include "utility.h"
+#include "downloadthread.h"
 
 QString ScrambleDialog::optional1;
 QString ScrambleDialog::optional2;
@@ -34,48 +35,48 @@ QString ScrambleDialog::optional7;
 QString ScrambleDialog::optional8;
 
 QString ScrambleDialog::opt1[] = {
-		"0953_01", //まいにちフランス語 入門編
-		"4412_01", //まいにちフランス語 応用編
-		"0943_01", //まいにちドイツ語 入門編／初級編
-		"4410_01", //まいにちドイツ語 応用編
-		"0946_01", //まいにちイタリア語 入門編
-		"4411_01", //まいにちイタリア語 応用編
-		"0948_01", //まいにちスペイン語 入門編／初級編
-		"4413_01"  //まいにちスペイン語 中級編／応用編
+		"0953_01", //まいにちフランス語 
+		"0943_01", //まいにちドイツ語
+		"0946_01", //まいにちイタリア語
+		"0948_01", //まいにちスペイン語
+		"0956_01", //まいにちロシア語
+		"2769_01", //ポルトガル語講座
+		"0937_01", //アラビア語講座
+		"7880_01"  //Asian View
 };
 QString ScrambleDialog::opt2[] = {
 		"0915_01", //まいにち中国語
 		"6581_01", //ステップアップ中国語
 		"0951_01", //まいにちハングル講座
 		"6810_01", //ステップアップ ハングル講座
-		"0956_01", //まいにちロシア語 入門編
-		"4414_01", //まいにちロシア語 応用編
+		"0956_01", //まいにちロシア語 
+		"2769_01", //ポルトガル語講座
 		"0937_01", //アラビア語講座
-		"2769_01"  //ポルトガル語ステップアップ
+		"7880_01"  //Asian View
 };
 QString ScrambleDialog::opt3[] = {
-		"0953_01", //まいにちフランス語 入門編
-		"0943_01", //まいにちドイツ語 入門編／初級編
-		"0946_01", //まいにちイタリア語 入門編
-		"0948_01", //まいにちスペイン語 入門編／初級編
-		"0956_01", //まいにちロシア語 入門編
-		"1893_01", //ポルトガル語講座 入門
+		"0953_01", //まいにちフランス語 
+		"0943_01", //まいにちドイツ語
+		"0946_01", //まいにちイタリア語
+		"0948_01", //まいにちスペイン語
 		"0915_01", //まいにち中国語
-		"0951_01"  //まいにちハングル講座
+		"6581_01", //ステップアップ中国語
+		"0951_01", //まいにちハングル講座
+		"6810_01"  //ステップアップ ハングル講座
 };
 QString ScrambleDialog::opt4[] = {
-		"4412_01", //まいにちフランス語 応用編
-		"4410_01", //まいにちドイツ語 応用編
-		"4411_01", //まいにちイタリア語 応用編
-		"4413_01", //まいにちスペイン語 中級編／応用編
-		"4414_01", //まいにちロシア語 応用編
-		"2769_01", //ポルトガル語ステップアップ
+		"0915_01", //まいにち中国語
 		"6581_01", //ステップアップ中国語
-		"6810_01"  //ステップアップ ハングル講座
+		"0951_01", //まいにちハングル講座
+		"6810_01", //ステップアップ ハングル講座
+		"0953_01", //まいにちフランス語 
+		"0943_01", //まいにちドイツ語
+		"0946_01", //まいにちイタリア語
+		"0948_01"  //まいにちスペイン語
 };
 QString ScrambleDialog::opt5[] = {
 		"7155_01", //Living in Japan
-		"0937_01", //アラビア語講座
+		"7880_01", //Asian View
 		"0701_01", //やさしい日本語
 		"7629_01", //Learn Japanese from the News
 		"0164_01", //青春アドベンチャー
@@ -100,10 +101,16 @@ ScrambleDialog::ScrambleDialog( QString optional1, QString optional2, QString op
 //ScrambleDialog::ScrambleDialog( QString scramble, QWidget *parent )
 		: QDialog(parent), ui(new Ui::ScrambleDialog) {
     ui->setupUi(this);
+//	if( MainWindow::ouch_flag ) ui->checkBox_ouch->setChecked(true);
+	if( MainWindow::id_flag ) ui->checkBox->setChecked(true);
 	QString optional[] = { optional1, optional2, optional3, optional4, optional5, optional6, optional7, optional8 };
 	QLineEdit*  Button2[] = { ui->optional1, ui->optional2, ui->optional3, ui->optional4, ui->optional5, ui->optional6, ui->optional7, ui->optional8 };
 	for ( int i = 0 ; i < 8 ; ++i ) Button2[i]->setText( optional[i] );
 	ui->radioButton_9->setChecked(true);
+//	if ( MainWindow::ouch_flag ) ui->checkBox_ouch->setChecked(true);
+//	if ( ui->checkBox_ouch->isChecked() ) { MainWindow::ouch_flag = true; ui->checkBox_ouch->setChecked(true);} else { MainWindow::ouch_flag = false; ui->checkBox_ouch->setChecked(false); }
+	if ( MainWindow::id_flag ) ui->checkBox->setChecked(true);
+	if ( ui->checkBox->isChecked() ) { MainWindow::id_flag = true; ui->checkBox->setChecked(true);} else { MainWindow::id_flag = false; ui->checkBox->setChecked(false); }
 }
 
 ScrambleDialog::~ScrambleDialog() {
@@ -120,6 +127,8 @@ QString ScrambleDialog::scramble_set( QString opt, int i ) {
 		if (Button[j]->isChecked())	opt = opt_set[j];
 	if (!(ui->radioButton_9->isChecked())) Button2[i]->setText( opt );
 	if ( ui->radioButton_9->isChecked() && Utility::getProgram_name( Button2[i]->text() ) == "" ) { Button2[i]->setText( opt ); }
+//	if ( ui->checkBox_ouch->isChecked() ) { MainWindow::ouch_flag = true; ui->checkBox_ouch->setChecked(true);} else { MainWindow::ouch_flag = false; ui->checkBox_ouch->setChecked(false); }
+	if ( ui->checkBox->isChecked() ) { MainWindow::id_flag = true; ui->checkBox->setChecked(true);} else { MainWindow::id_flag = false; ui->checkBox->setChecked(false); }
 	return opt;
 }
 QString ScrambleDialog::scramble1() {

@@ -59,6 +59,7 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QVariant>
+#include <QDesktopServices>
 
 #define SETTING_GROUP "MainWindow"
 #define SETTING_GEOMETRY "geometry"
@@ -139,11 +140,11 @@ namespace {
 //			int day = regexp.cap( 2 ).toInt();
 //			result = QString( " (%1/%2/%3)" ).arg( regexp.cap( 3 ) )
 //					.arg( month, 2, 10, QLatin1Char( '0' ) ).arg( day, 2, 10, QLatin1Char( '0' ) );
-			result = QString( "  (2023/11/08)" ); 
+			result = QString( "  (2024/04/04)" ); 
 		}
 #endif
 #ifdef QT6
-			result = QString( "  (2023/11/08)" ); 
+			result = QString( "  (2024/04/04)" ); 
 #endif
 		return result;
 	}
@@ -183,6 +184,7 @@ QString MainWindow::prefix = "http://cgi2.nhk.or.jp/gogaku/st/xml/";
 QString MainWindow::suffix = "listdataflv.xml";
 QString MainWindow::json_prefix = "https://www.nhk.or.jp/radioondemand/json/";
 QString MainWindow::no_write_ini;
+bool MainWindow::id_flag = false;
 
 MainWindow::MainWindow( QWidget *parent )
 		: QMainWindow( parent ), ui( new Ui::MainWindowClass ), downloadThread( NULL ) {
@@ -227,10 +229,14 @@ MainWindow::MainWindow( QWidget *parent )
 	// 「カスタマイズ」メニューの構築
 	customizeMenu = menuBar()->addMenu( QString::fromUtf8( "カスタマイズ" ) );
 
-	QAction* action = new QAction( QString::fromUtf8( "保存フォルダ..." ), this );
+	QAction* action = new QAction( QString::fromUtf8( "保存フォルダ設定..." ), this );
 	connect( action, SIGNAL( triggered() ), this, SLOT( customizeSaveFolder() ) );
 	customizeMenu->addAction( action );
+	action = new QAction( QString::fromUtf8( "保存フォルダ開く..." ), this );
+	connect( action, SIGNAL( triggered() ), this, SLOT( customizeFolderOpen() ) );
+	customizeMenu->addAction( action );
 	customizeMenu->addSeparator();
+
 	action = new QAction( QString::fromUtf8( "ファイル名設定..." ), this );
 	connect( action, SIGNAL( triggered() ), this, SLOT( customizeFileName() ) );
 	customizeMenu->addAction( action );
@@ -588,6 +594,10 @@ void MainWindow::customizeSaveFolder() {
 		outputDir = dir + QDir::separator();
 		outputDirSpecified = true;
 	}
+}
+
+void MainWindow::customizeFolderOpen() {
+	QDesktopServices::openUrl(QUrl("file:///" + outputDir, QUrl::TolerantMode));
 }
 
 void MainWindow::customizeScramble() {
