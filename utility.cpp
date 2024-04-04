@@ -322,7 +322,7 @@ QString Utility::getProgram_name3( QString title, QString corner_name ) {
 	return attribute;
 }
 
-std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Utility::getJsonData1( QString strReply ) {
+std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Utility::getJsonData1( QString strReply, int json_ohyo ) {
 	QStringList fileList;			fileList.clear();
 	QStringList kouzaList;			kouzaList.clear();
 	QStringList file_titleList;		file_titleList.clear();
@@ -363,7 +363,15 @@ std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Util
 			QString year = match.captured(0);
 			year = year.left(4);
 			
-			kouzaList += program_name;
+			QString program_name_tmp = program_name;
+			if( json_ohyo == 1 && ( file_title.contains( "中級編", Qt::CaseInsensitive) || file_title.contains( "応用編", Qt::CaseInsensitive) )  ) continue;
+			if( json_ohyo == 2 && ( file_title.contains( "入門編", Qt::CaseInsensitive) || file_title.contains( "初級編", Qt::CaseInsensitive) )  ) continue;
+			if( json_ohyo == 1 && ( file_title.contains( "入門編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 入門編";
+			if( json_ohyo == 1 && ( file_title.contains( "初級編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 初級編";
+			if( json_ohyo == 2 && ( file_title.contains( "中級編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 中級編";
+			if( json_ohyo == 2 && ( file_title.contains( "応用編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 応用編";
+			
+			kouzaList += program_name_tmp;
 			file_titleList += file_title;
 			fileList += file_name;
 			hdateList += onair_date;
@@ -373,7 +381,7 @@ std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Util
 	return { fileList, kouzaList, file_titleList, hdateList, yearList };
 }
 
-std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Utility::getJsonData2( QString strReply ) {
+std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Utility::getJsonData2( QString strReply, int json_ohyo ) {
 	QStringList fileList;			fileList.clear();
 	QStringList kouzaList;			kouzaList.clear();
 	QStringList file_titleList;		file_titleList.clear();
@@ -416,7 +424,15 @@ std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> Util
 				QString year = aa_vinfo4.left( 4 );
 				if ( year == "" ) year = open_time.left( 4 );
 				
-				kouzaList += program_name;
+				QString program_name_tmp = program_name;
+				if( json_ohyo == 1 && ( file_title.contains( "中級編", Qt::CaseInsensitive) || file_title.contains( "応用編", Qt::CaseInsensitive) )  ) continue;
+				if( json_ohyo == 2 && ( file_title.contains( "入門編", Qt::CaseInsensitive) || file_title.contains( "初級編", Qt::CaseInsensitive) )  ) continue;
+				if( json_ohyo == 1 && ( file_title.contains( "入門編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 入門編";
+				if( json_ohyo == 1 && ( file_title.contains( "初級編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 初級編";
+				if( json_ohyo == 2 && ( file_title.contains( "中級編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 中級編";
+				if( json_ohyo == 2 && ( file_title.contains( "応用編", Qt::CaseInsensitive) )) program_name_tmp = program_name_tmp + " 応用編";
+
+				kouzaList += program_name_tmp;
 				file_titleList += file_title;
 				fileList += file_name;
 				hdateList += onair_date;

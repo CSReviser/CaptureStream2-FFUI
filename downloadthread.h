@@ -60,7 +60,7 @@ private:
 	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getAttribute1( QString url );
 	QString getAttribute2( QString url, QString attribute );
 //	QStringList getJsonData( QString url, QString attribute );
-	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData( QString url, int Koza2 );
+	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData( QString url );
 	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData1( QString url );
 	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData2( QString url );
 	QStringList getJsonData_ouch( QString url, QString attribute );
@@ -74,7 +74,7 @@ private:
 	QString ffmpeg_process( QStringList arguments );
 	
 	bool captureStream( QString kouza, QString hdate, QString file, QString nendo, QString dir, QString this_week );
-	bool captureStream_json( QString kouza, QString hdate, QString file, QString nendo, QString title, QString dupnmb, QString ouch );
+	bool captureStream_json( QString kouza, QString hdate, QString file, QString nendo, QString title, QString dupnmb );
 	
 	QString formatName( QString format, QString kouza, QString hdate, QString file, QString nendo, QString dupnmb, bool checkIllegal );
 	QStringList getElements( QString url, QString path );

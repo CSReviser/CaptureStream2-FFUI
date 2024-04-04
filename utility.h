@@ -41,8 +41,8 @@ namespace Utility {
 	std::tuple<QStringList, QStringList> getProgram_List();
 	std::tuple<QStringList, QStringList> getProgram_List1( QString strReply );
 	std::tuple<QStringList, QStringList> getProgram_List2( QString strReply );
-	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData1( QString strReply );
-	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData2( QString strReply );
+	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData1( QString strReply, int json_ohyo );
+	std::tuple<QStringList, QStringList, QStringList, QStringList, QStringList> getJsonData2( QString strReply, int json_ohyo );
 	bool nogui();
 	QStringList optionList();
 }
