@@ -18,8 +18,10 @@ jobs:
         modules: 'qtcharts'
         
     - uses: actions/checkout@v4
+    - name: mdir
+      run: mdir ./build
     - name: cmake
-      run: cmake -S ./ -B ./ -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+      run: cmake -S ./ -B ./build -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
     - name: make
       run: make
       
@@ -29,5 +31,5 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: CaptureStream2-Lite
-        path: ./
+        path: ./build
 
