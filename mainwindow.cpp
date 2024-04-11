@@ -140,11 +140,11 @@ namespace {
 //			int day = regexp.cap( 2 ).toInt();
 //			result = QString( " (%1/%2/%3)" ).arg( regexp.cap( 3 ) )
 //					.arg( month, 2, 10, QLatin1Char( '0' ) ).arg( day, 2, 10, QLatin1Char( '0' ) );
-			result = QString( "  (2024/04/04)" ); 
+			result = QString( "  (2024/04/11)" ); 
 		}
 #endif
 #ifdef QT6
-			result = QString( "  (2024/04/04)" ); 
+			result = QString( "  (2024/04/11)" ); 
 #endif
 		return result;
 	}
@@ -203,8 +203,8 @@ MainWindow::MainWindow( QWidget *parent )
 //	setMaximumHeight( maximumHeight() - menuBar()->height() );
 //	setMinimumHeight( maximumHeight() - menuBar()->height() );
 	menuBar()->setNativeMenuBar(false);		// 他のOSと同様にメニューバーを表示　2023/04/04
-	setMaximumHeight( maximumHeight() );		// ダウンロードボタンが表示されない問題対策　2022/04/16
-	setMinimumHeight( maximumHeight() );		// ダウンロードボタンが表示されない問題対策　2022/04/16
+	setMaximumHeight( maximumHeight() + menuBar()->height() );		// ダウンロードボタンが表示されない問題対策　2022/04/16
+	setMinimumHeight( maximumHeight() + menuBar()->height() );		// ダウンロードボタンが表示されない問題対策　2022/04/16
 //	QRect rect = geometry();
 //	rect.setHeight( rect.height() - menuBar()->height() );
 //	rect.setHeight( rect.height() );		// ダウンロードボタンが表示されない問題対策　2022/04/16
@@ -539,6 +539,30 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 			QString extension = settings.value( textComboBoxes[i].key, textComboBoxes[i].defaultValue ).toString();
 			textComboBoxes[i].comboBox->setCurrentIndex( textComboBoxes[i].comboBox->findText( extension ) );
 		}
+		bool flag = false;
+		if ( QDate::currentDate() <= DownloadThread::nendo_end_date1 ){
+		if ( ui->toolButton_french->isChecked() ) flag = true; else flag = false; ui->toolButton_french->setChecked(false);
+		ui->toolButton_french->setText( QString( Utility::getProgram_name( "0953_x1" ) ) ); if ( flag ) ui->toolButton_french->setChecked( true );
+		if ( ui->toolButton_french2->isChecked() ) flag = true; else flag = false; ui->toolButton_french2->setChecked(false);
+		ui->toolButton_french2->setText( QString( Utility::getProgram_name( "0953_y1" ) ) ); if ( flag ) ui->toolButton_french2->setChecked( true );
+		if ( ui->toolButton_german->isChecked() ) flag = true; else flag = false; ui->toolButton_german->setChecked(false);
+		ui->toolButton_german->setText( QString( Utility::getProgram_name( "0943_x1" ) ) ); if ( flag ) ui->toolButton_german->setChecked( true );
+		if ( ui->toolButton_german2->isChecked() ) flag = true; else flag = false; ui->toolButton_german2->setChecked(false);
+		ui->toolButton_german2->setText( QString( Utility::getProgram_name( "0943_y1" ) ) ); if ( flag ) ui->toolButton_german2->setChecked( true );
+		if ( ui->toolButton_italian->isChecked() ) flag = true; else flag = false; ui->toolButton_italian->setChecked(false);
+		ui->toolButton_italian->setText( QString( Utility::getProgram_name( "0946_x1" ) ) ); if ( flag ) ui->toolButton_italian->setChecked( true );
+		if ( ui->toolButton_italian2->isChecked() ) flag = true; else flag = false; ui->toolButton_italian2->setChecked(false);
+		ui->toolButton_italian2->setText( QString( Utility::getProgram_name( "0946_y1" ) ) ); if ( flag ) ui->toolButton_italian2->setChecked( true );
+		if ( ui->toolButton_spanish->isChecked() ) flag = true; else flag = false; ui->toolButton_spanish->setChecked(false);
+		ui->toolButton_spanish->setText( QString( Utility::getProgram_name( "0948_x1" ) ) ); if ( flag ) ui->toolButton_spanish->setChecked( true );
+		if ( ui->toolButton_spanish2->isChecked() ) flag = true; else flag = false; ui->toolButton_spanish2->setChecked(false);
+		ui->toolButton_spanish2->setText( QString( Utility::getProgram_name( "0948_y1" ) ) ); if ( flag ) ui->toolButton_spanish2->setChecked( true );
+		if ( ui->toolButton_russian->isChecked() ) flag = true; else flag = false; ui->toolButton_russian->setChecked(false);
+		ui->toolButton_russian->setText( QString( Utility::getProgram_name( "0956_x1" ) ) ); if ( flag ) ui->toolButton_russian->setChecked( true );
+		if ( ui->toolButton_russian2->isChecked() ) flag = true; else flag = false; ui->toolButton_russian2->setChecked(false);
+		ui->toolButton_russian2->setText( QString( Utility::getProgram_name( "0956_y1" ) ) ); if ( flag ) ui->toolButton_russian2->setChecked( true );
+		}
+	
 	} else {	// 設定書き出し
 #if !defined( QT4_QT5_MAC )
 		settings.setValue( SETTING_GEOMETRY, saveGeometry() );
