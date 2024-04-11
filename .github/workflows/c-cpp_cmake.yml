@@ -18,8 +18,8 @@ jobs:
         modules: 'qtcharts'
         
     - uses: actions/checkout@v4
-    - name: mdir
-      run: mdir ./build
+    - name: mkdir
+      run: mkdir ./build
     - name: cmake
       run: cmake -S ./ -B ./build -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
     - name: make
