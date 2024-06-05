@@ -2,7 +2,7 @@
 ## ([語学講座CS2](https://csreviser.github.io/CaptureStream2/))[［類似アプリ］](https://csreviser.github.io/CaptureStream2/application)          
 
 ***
-### 語学講座CS2【Lite】 [2024/06/05版](https://github.com/CSReviser/Capturestream2-Lite/releases/tag/20240411)                 
+### 語学講座CS2【Lite】 [2024/06/05版](https://github.com/CSReviser/Capturestream2-Lite/releases/tag/20240605)                 
 
    - #### Windows版(32bit): [2024/06/05版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240605/CaptureStream2-Lite-Windows-x86-20240605.zip)　　
    - #### Windows版(64bit): [2024/06/05版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240605/CaptureStream2-Lite-Windows-x64-20240605.zip) 　　
