@@ -132,6 +132,9 @@ QDate DownloadThread::nendo_end_date2(2026, 3, 29);	// 次年度末
 QHash<QString, QString> DownloadThread::ffmpegHash;
 QHash<QProcess::ProcessError, QString> DownloadThread::processError;
 
+QStringList DownloadThread::idList;
+QStringList DownloadThread::titleList;
+
 //--------------------------------------------------------------------------------
 
 DownloadThread::DownloadThread( Ui::MainWindowClass* ui ) : isCanceled(false), failed1935(false) {
@@ -1029,12 +1032,13 @@ QString DownloadThread::ffmpeg_process( QStringList arguments ) {
 QString DownloadThread::paths[] = {
 	"english/basic0", "english/basic1", "english/basic2", "english/basic3",
 	"english/kaiwa", "english/business1",
-	"english/enjoy", "english/timetrial", "english/vr-radio", "",
+	"english/enjoy", "english/timetrial", "", "",
 	"chinese/kouza", "chinese/stepup", "hangeul/kouza", "hangeul/stepup",
 	"german/kouza", "german/kouza2", "french/kouza", "french/kouza2",
 	"italian/kouza", "italian/kouza2", "spanish/kouza", "spanish/kouza2",
 	"russian/kouza","russian/kouza2", "", ""
 };
+
 
 QString DownloadThread::json_paths[] = {
 	"GGQY3M1929_01", "148W8XX226_01", "83RW6PK3GG_01", "B2J88K328M_01",
@@ -1058,12 +1062,17 @@ QString DownloadThread::paths2[] = {
 };
 
 QString DownloadThread::json_paths2[] = { 
-	"6805_01", "6806_01", "6807_01", "6808_01",
-	"2331_01", "0916_01", "6809_01", "3064_01", 
-	"0953_x1", "0953_y1", "0943_x1", "0943_y1",
-	"0948_x1", "0948_y1", "0946_x1", "0946_y1",
-	"0956_x1", "0956_y1", "0915_01", "6581_01",
-	"0951_01", "6810_01", 
+	"小学生の基礎英語", "中学生の基礎英語 レベル１", "中学生の基礎英語 レベル２", "中高生の基礎英語 in English",
+	"ラジオ英会話", "ラジオビジネス英語", 
+	"エンジョイ・シンプル・イングリッシュ", "3英会話タイムトライアル", "ボキャブライダー", "現代英語",
+	"まいにち中国語", "ステップアップ中国語",
+	"まいにちハングル講座", "ステップアップ ハングル講座",
+	"まいにちドイツ語入門", "まいにちドイツ語応用",
+	"まいにちフランス語入門", "まいにちフランス語応用",
+	"まいにちイタリア語入門", "まいにちイタリア語応用",
+	"まいにちスペイン語入門", "まいにちスペイン語応用", 
+	"まいにちロシア語入門", "まいにちロシア語応用",
+	"アラビア語講座", "ポルトガル語講座", 
 	"NULL"
 };
 
@@ -1172,14 +1181,11 @@ void DownloadThread::run() {
 		if ( paths[i].right( 9 ).startsWith("optional7") ) json_paths[i] = optional7;
 		if ( paths[i].right( 9 ).startsWith("optional8") ) json_paths[i] = optional8;
 #endif		
-	    	QString pattern( "[0-9]{4}" );
-    		pattern = QRegularExpression::anchoredPattern(pattern);
-		if ( QRegularExpression(pattern).match( json_paths[i] ).hasMatch() ) json_paths[i] += "_01" ;
-
 		if ( checkbox[i]->isChecked()) {
 		   QString Xml_koza = "NULL";
-		   Xml_koza = map.value( json_paths[i] );
-		   		   	
+//		   Xml_koza = map.value( json_paths[i] );
+		   Xml_koza = paths[i];
+		   		   		   	
 		   bool flag1 = false; bool flag2 = false;
 		   if ( (ui->checkBox_next_week2->isChecked() || json_paths[i] == "0000" ) && Xml_koza != "" ) flag1 = true;	// xml 放送翌週月曜から１週間
 		   if ( !(ui->checkBox_next_week2->isChecked()) || ( json_paths[i] != "0000" && Xml_koza == "" )) flag2 = true;	//json 放送後１週間

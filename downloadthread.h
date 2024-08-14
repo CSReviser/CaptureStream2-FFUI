@@ -55,6 +55,8 @@ public:
 	static QDate zenki_end_date;
 	static QDate kouki_start_date;
 	static QDate nendo_end_date;
+	static QStringList idList;
+	static QStringList titleList;
 	
 protected:
 	void run();
@@ -99,6 +101,7 @@ private:
 	static QString paths2[];
 	static QString paths3[];
 	static QString json_paths[];
+//	 QString json_paths[];
 	static QString json_paths2[];
 	static QMap<QString, QString> map;
 	static QString prefix;
