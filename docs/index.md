@@ -7,7 +7,7 @@
    - #### Windows版(32bit): [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-Windows-x86-20240814.zip)　　
    - #### Windows版(64bit): [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-Windows-x64-20240814.zip) 　　
    - #### Ubuntu版: [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-Ubuntu-20240814.zip)　　
-   - #### Macintosh版: [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-MacOS-20240814.dmg) 　　　　
+   - #### Macintosh版: [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-MacOS-20240814-1.dmg) 　　　　
                                
 ***       
 ### 【Wondows版】                       
