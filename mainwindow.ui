@@ -841,6 +841,30 @@
      <item row="17" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_26">
        <item>
+        <widget class="QCheckBox" name="checkBox_thumbnail">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>サムネ付</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="label_ext">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -857,7 +881,7 @@
           <enum>Qt::LeftToRight</enum>
          </property>
          <property name="text">
-          <string>　　　　          拡張子：</string>
+          <string>          拡張子：</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

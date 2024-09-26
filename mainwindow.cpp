@@ -140,11 +140,11 @@ namespace {
 //			int day = regexp.cap( 2 ).toInt();
 //			result = QString( " (%1/%2/%3)" ).arg( regexp.cap( 3 ) )
 //					.arg( month, 2, 10, QLatin1Char( '0' ) ).arg( day, 2, 10, QLatin1Char( '0' ) );
-			result = QString( "  (2024/08/14)" ); 
+			result = QString( "  (2024/09/26)" ); 
 		}
 #endif
 #ifdef QT6
-			result = QString( "  (2024/08/14)" ); 
+			result = QString( "  (2024/09/26)" ); 
 #endif
 		return result;
 	}
@@ -185,6 +185,11 @@ QString MainWindow::suffix = "listdataflv.xml";
 QString MainWindow::json_prefix = "https://www.nhk.or.jp/radioondemand/json/";
 QString MainWindow::no_write_ini;
 bool MainWindow::id_flag = false;
+QStringList MainWindow::idList;
+QStringList MainWindow::titleList;
+QMap<QString, QString> MainWindow::name_map;
+QMap<QString, QString> MainWindow::id_map;
+QMap<QString, QString> MainWindow::thumbnail_map;
 
 MainWindow::MainWindow( QWidget *parent )
 		: QMainWindow( parent ), ui( new Ui::MainWindowClass ), downloadThread( NULL ) {
@@ -250,6 +255,11 @@ MainWindow::MainWindow( QWidget *parent )
 	connect( action, SIGNAL( triggered() ), this, SLOT( customizeScramble() ) );
 	customizeMenu->addAction( action );
 #endif
+	customizeMenu->addSeparator();
+	action = new QAction( QString::fromUtf8( "ホームページ表示..." ), this );
+	connect( action, SIGNAL( triggered() ), this, SLOT( homepageOpen() ) );
+	customizeMenu->addAction( action );
+
 	customizeMenu->addSeparator();
 	action = new QAction( QString::fromUtf8( "設定削除（終了）..." ), this );
 	connect( action, SIGNAL( triggered() ), this, SLOT( closeEvent2() ) );
@@ -401,9 +411,11 @@ void MainWindow::settings( enum ReadWriteMode mode ) {
 //		{ ui->toolButton_ouyou2, "ouyou2", false },
 		{ ui->toolButton_enjoy, "enjoy", false },
 		{ ui->toolButton_skip, "skip", true },
+		{ ui->checkBox_thumbnail, "thumbnail", false },
 		{ NULL, NULL, false }
 	};
-
+	setmap();
+	
 	typedef struct ComboBox {
 		QComboBox* comboBox;
 		QString key;
@@ -625,6 +637,26 @@ void MainWindow::customizeFolderOpen() {
 	QDesktopServices::openUrl(QUrl("file:///" + outputDir, QUrl::TolerantMode));
 }
 
+void MainWindow::homepageOpen() {
+//	QString ver_tmp1 = QString::fromUtf8( VERSION) ;
+//	QString ver_tmp2 = ver_tmp1.remove("/");
+//	QString ver_tmp3 = Utility::getLatest_version();
+//	QString ver_tmp4 = ver_tmp3.left(4) + "/" + ver_tmp3.mid(4,2) + "/" + ver_tmp3.mid(6,2);
+	QString	message = "語学講座CS2のホームページを表示しますか？";
+//	int current_version = ver_tmp2.toInt();
+//	int Latest_version = ver_tmp3.left(8).toInt();
+	
+//	if ( Latest_version > current_version ) message = QString::fromUtf8( "最新版があります\n現在：" ) + VERSION + QString::fromUtf8( "\n最新：" ) + ver_tmp4 + QString::fromUtf8( "\n表示しますか？" );
+//	if ( Latest_version < current_version ) message = QString::fromUtf8( "最新版を確認して下さい\n現在：" ) + VERSION + QString::fromUtf8( "\n表示しますか？" );
+//	if ( Latest_version == current_version ) message = QString::fromUtf8( "最新版です\n現在：" ) + VERSION + QString::fromUtf8( "\n表示しますか？" );
+
+	int res = QMessageBox::question(this, tr("ホームページ表示"), message);
+//	int res = QMessageBox::question(this, tr("ホームページ表示"), tr("最新版を確認して下さい\n表示しますか？"));
+	if (res == QMessageBox::Yes) {
+		QDesktopServices::openUrl(QUrl("https://csreviser.github.io/CaptureStream2/", QUrl::TolerantMode));
+	}
+}
+
 void MainWindow::customizeScramble() {
 	QString optional_temp[] = { optional1, optional2, optional3, optional4, optional5, optional6, optional7, optional8, "NULL" };
 	ScrambleDialog dialog( optional1, optional2, optional3, optional4, optional5, optional6, optional7, optional8 );
@@ -737,5 +769,103 @@ void MainWindow::closeEvent2( ) {
 	messagewindow.close();
 	QCoreApplication::exit();
 	}
+}
+
+void MainWindow::setmap() {
+	QStringList idList; 		idList.clear();
+	QStringList titleList; 		titleList.clear();
+	QStringList thumbnailList; 	thumbnailList.clear();
+	QString temp1;			QString temp2;
+	QStringList kozaList = { "まいにちイタリア語", "まいにちスペイン語", "まいにちドイツ語", "まいにちフランス語", "まいにちロシア語" };
+	QStringList kozaList1 = { "4MY6Q8XP88_01", "GLZQ4M519X_01", "6LPPKP6W8Q_01", "D6RM27PGVM_01", "X4X6N1XG8Z_01", "D85RZVGX7W_01", "LRK2VXPK5X_01", "M65G6QLKMY_01", "R5XR783QK3_01", "DK83KZ8848_01", "5L3859P515_01", "XKR4W8GY15_01", "4K58V66ZGQ_01", "X78J5NKWM9_01", "MVYJ6PRZMX_01", "JWQ88ZVWQK_01" };
+		
+	const QString jsonUrl1 = "https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals";
+	QString strReply;
+	int TimerMin = 100;
+	int TimerMax = 5000;
+	int Timer = TimerMin;
+	int retry = 20;
+	for ( int i = 0 ; i < retry ; i++ ) {
+		strReply = Utility::getJsonFile( jsonUrl1, Timer );
+		if ( strReply != "error" ) break;
+		if ( Timer < 500 ) Timer += 50;
+		if ( Timer > 500 && Timer < TimerMax ) Timer += 100;
+	}
+
+	QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
+	QJsonObject jsonObject = jsonResponse.object();
+    	QJsonArray jsonArray = jsonObject[ "corners" ].toArray();
+	for (const auto&& value : jsonArray) {
+		QJsonObject objxx = value.toObject();
+		QString title = objxx[ "title" ].toString();
+		QString corner_name = objxx[ "corner_name" ].toString();
+		QString series_site_id = objxx[ "series_site_id" ].toString();
+		QString corner_site = objxx[ "corner_site_id" ].toString();
+		QString thumbnail_url = objxx[ "thumbnail_url" ].toString();
+				
+		QString program_name = Utility::getProgram_name3( title, corner_name );
+		QString url_id = series_site_id + "_" + corner_site;
+		idList += url_id;
+		titleList += program_name;
+		thumbnailList += thumbnail_url;
+	}
+	for ( int i = 0 ; i < idList.count() ; i++  )	{
+		id_map.insert( idList[i], titleList[i] );
+		name_map.insert( titleList[i], idList[i] );			
+		thumbnail_map.insert( idList[i], thumbnailList[i] );
+	}
+
+	for ( int i = 0 ; i < kozaList.count() ; i++  )	{
+		QString url = name_map[ kozaList[i] ];
+		int l = 10 ;
+		int l_length = url.length();
+		if ( l_length != 13 ) l = l_length -3 ;
+ 		const QString jsonUrl1 = "https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/series?site_id=" + url.left( l ) + "&corner_site_id=" + url.right(2);
+		for ( int i = 0 ; i < retry ; i++ ) {
+			strReply = Utility::getJsonFile( jsonUrl1, Timer );
+			if ( strReply != "error" ) break;
+			if ( Timer < 500 ) Timer += 50;
+			if ( Timer > 500 && Timer < TimerMax ) Timer += 100;
+		}
+		QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
+		QJsonObject jsonObject = jsonResponse.object();
+		QJsonArray jsonArray = jsonObject[ "episodes" ].toArray();
+		for (const auto&& value : jsonArray) {
+			QJsonObject objxx = value.toObject();
+			QString file_title = objxx[ "program_title" ].toString();
+			if( file_title.contains("入門編") ) {
+				temp1 = kozaList[i] + "【入門編】";
+				temp2 = url.left( l ) + "_x1";
+			}
+			if( file_title.contains("初級編") ) {
+				temp1 = kozaList[i] + "【初級編】";
+				temp2 = url.left( l ) + "_x1";
+			}
+			if( file_title.contains("応用編") ) {
+				temp1 = kozaList[i] + "【応用編】";
+				temp2 = url.left( l ) + "_y1";
+			}
+			if( file_title.contains("中級編") ) {
+				temp1 = kozaList[i] + "【中級編】";
+				temp2 = url.left( l ) + "_y1";
+			}
+			name_map.insert( temp1, temp2 );
+			id_map.insert( temp2, temp1 );
+		}
+	}
+	for ( int i = 0 ; i < kozaList1.count() ; i++  ) {
+		if(!id_map.contains(kozaList1[i])) id_map.insert( kozaList1[i], Utility::getProgram_name(kozaList1[i]) );;
+	}
+
+	name_map.insert( "中国語講座", "983PKQPYN7_s1" );
+	name_map.insert( "ハングル講座", "LR47WW9K14_s1" );
+	name_map.insert( "日本語講座", "6LPPKP6W8Q_s1" );
+	id_map.insert( "983PKQPYN7_s1", "中国語講座" );
+	id_map.insert( "LR47WW9K14_s1", "ハングル講座" );
+	id_map.insert( "6LPPKP6W8Q_s1", "日本語講座" );
+	
+	idList.clear();
+	titleList.clear();
+	return;
 }
 
