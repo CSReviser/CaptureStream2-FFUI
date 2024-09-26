@@ -2,12 +2,12 @@
 ## ([語学講座CS2](https://csreviser.github.io/CaptureStream2/))[［類似アプリ］](https://csreviser.github.io/CaptureStream2/application)          
 
 ***
-### 語学講座CS2【Lite】 [2024/08/14版](https://github.com/CSReviser/Capturestream2-Lite/releases/tag/20240814)                 
+### 語学講座CS2【Lite】 [2024/09/26版](https://github.com/CSReviser/Capturestream2-Lite/releases/tag/20240926)                 
 
-   - #### Windows版(32bit): [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-Windows-x86-20240814.zip)　　
-   - #### Windows版(64bit): [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-Windows-x64-20240814.zip) 　　
-   - #### Ubuntu版: [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-Ubuntu-20240814.zip)　　
-   - #### Macintosh版: [2024/08/14版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240814/CaptureStream2-Lite-MacOS-20240814-1.dmg) 　　　　
+   - #### Windows版(32bit): [2024/09/26版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240926/CaptureStream2-Lite-Windows-x86-20240926.zip)　　
+   - #### Windows版(64bit): [2024/09/26版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240926/CaptureStream2-Lite-Windows-x64-20240926.zip) 　　
+   - #### Ubuntu版: [2024/09/26版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240926/CaptureStream2-Lite-Ubuntu-20240926.zip)　　
+   - #### Macintosh版: [2024/09/26版ダウンロード](https://github.com/CSReviser/CaptureStream2-Lite/releases/download/20240926/CaptureStream2-Lite-MacOS-20240926.dmg) 　　　　
                                
 ***       
 ### 【Wondows版】                       
